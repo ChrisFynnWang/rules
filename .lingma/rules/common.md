@@ -1,0 +1,34 @@
+---
+description: Java/Spring 编码约定与 AI 协作边界
+alwaysApply: false
+---
+
+# 基本规则
+
+## 范围与改动原则
+
+- 只改与当前任务直接相关的代码；不做顺手重构、不扩大范围。
+- 新增代码需与现有包结构、命名、注解风格一致
+- 修改前先阅读调用方与被改类周边实现，优先复用已有工具类与配置
+
+## 命名与风格
+- 如果是新生成的java类, 需有加上如下注释, @date为当前时间, 格式如下。java文件描述与其之间空一行
+  /**
+    * @author chris.wang
+    * @date yyyy/MM/dd
+      */
+
+## 技术栈与分层
+- 服务为 Spring Boot；持久化侧注意 MyBatis-Plus、分库分表（ShardingSphere）相关配置与实体。
+- Controller 保持薄；业务逻辑放在 `service` / `service.impl`；数据访问在 `dao` / `mapper`。
+- Mapper层extends BaseMapper, Dao层extends ServiceImpl
+- 定时任务、加锁（如 Redisson）、安全透传拦截等已有模块时，沿用现有模式，不另起一套。
+
+## 安全与敏感数据
+
+## 异常与返回
+
+## 配置与资源
+
+## 示例（意图）
+
