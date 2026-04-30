@@ -1,3 +1,5 @@
+Common Rule
+
 ---
 description: Java/Spring 编码约定与 AI 协作边界
 alwaysApply: false
@@ -13,15 +15,17 @@ alwaysApply: false
 
 ## 命名与风格
 - 如果是新生成的java类, 需有加上如下注释, @date为当前时间, 格式如下。java文件描述与其之间空一行
-  /**
+    /**
     * @author chris.wang
     * @date yyyy/MM/dd
-      */
+    */
 
 ## 技术栈与分层
 - 服务为 Spring Boot；持久化侧注意 MyBatis-Plus、分库分表（ShardingSphere）相关配置与实体。
 - Controller 保持薄；业务逻辑放在 `service` / `service.impl`；数据访问在 `dao` / `mapper`。
 - Mapper层extends BaseMapper, Dao层extends ServiceImpl
+    - *_cipher字段是通过ShardingSphere隐式转化, 不用实际放到Entity中
+    - 如果数据库表字段是DateTime, 则Java Entity中字段类型使用LocalDateTime
 - 定时任务、加锁（如 Redisson）、安全透传拦截等已有模块时，沿用现有模式，不另起一套。
 
 ## 安全与敏感数据
@@ -31,4 +35,3 @@ alwaysApply: false
 ## 配置与资源
 
 ## 示例（意图）
-
