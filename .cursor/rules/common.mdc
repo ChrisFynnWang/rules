@@ -27,7 +27,8 @@ alwaysApply: false
     - *_cipher字段是通过ShardingSphere隐式转化, 不用实际放到Entity中
     - 如果数据库表字段是DateTime, 则Java Entity中字段类型使用LocalDateTime
     - 生成ORM对象Entity时，建表语句字段有comment，则需要注释到Entity上
-- 定时任务、加锁（如 Redisson）、安全透传拦截等已有模块时，沿用现有模式，不另起一套。
+    - 多循环迭代中尽量不做SQL查询打库，否则效率很低，使用批量操作
+    - 定时任务、加锁（如 Redisson）、安全透传拦截等已有模块时，沿用现有模式，不另起一套。
 
 ## 安全与敏感数据
 
